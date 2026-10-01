@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A professional task management web application built with HTML, CSS and JavaScript.">
+  <title>TaskFlow | Task Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#" aria-label="TaskFlow home">
+        <span class="brand-mark">✓</span>
+        <span>TaskFlow</span>
+      </a>
+
+      <div class="header-actions">
+        <span class="status-dot"></span>
+        <span id="saveStatus">Saved locally</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">PERSONAL WORKSPACE</p>
+        <h1>Manage your work with clarity.</h1>
+        <p class="hero-text">
+          Create, organize and complete tasks from one simple workspace.
+          Your tasks are stored securely in this browser using LocalStorage.
+        </p>
+      </div>
+
+      <button class="primary-btn" id="openAddBtn" type="button">
+        <span aria-hidden="true">+</span> Add Task
+      </button>
+    </section>
+
+    <section class="stats" aria-label="Task statistics">
+      <article class="stat-card">
+        <span class="stat-label">Total Tasks</span>
+        <strong id="totalTasks">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Active</span>
+        <strong id="activeTasks">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Completed</span>
+        <strong id="completedTasks">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">High Priority</span>
+        <strong id="highTasks">0</strong>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <div class="toolbar">
+        <div class="search-box">
+          <label class="sr-only" for="searchInput">Search tasks</label>
+          <span aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="Search tasks..." autocomplete="off">
+        </div>
+
+        <div class="filters" role="group" aria-label="Task filters">
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="active" type="button">Active</button>
+          <button class="filter-btn" data-filter="completed" type="button">Completed</button>
+        </div>
+
+        <select id="sortSelect" class="sort-select" aria-label="Sort tasks">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="priority">Priority</option>
+          <option value="dueDate">Due date</option>
+        </select>
+      </div>
+
+      <div class="list-header">
+        <div>
+          <p class="section-label">TASKS</p>
+          <h2 id="listTitle">All tasks</h2>
+        </div>
+        <button id="clearCompletedBtn" class="text-btn" type="button">Clear completed</button>
+      </div>
+
+      <div id="taskList" class="task-list"></div>
+
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">✓</div>
+        <h3 id="emptyTitle">No tasks yet</h3>
+        <p id="emptyText">Create your first task to get started.</p>
+        <button class="secondary-btn" id="emptyAddBtn" type="button">Create a task</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>TaskFlow</span>
+      <span>HTML • CSS • JavaScript • LocalStorage</span>
+    </div>
+  </footer>
+
+  <div id="taskModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="section-label">TASK DETAILS</p>
+          <h2 id="modalTitle">Add a new task</h2>
+        </div>
+        <button id="closeModalBtn" class="icon-btn" type="button" aria-label="Close">×</button>
+      </div>
+
+      <form id="taskForm">
+        <input type="hidden" id="taskId">
+
+        <div class="form-group">
+          <label for="taskTitle">Task title <span>*</span></label>
+          <input id="taskTitle" name="title" type="text" maxlength="100"
+                 placeholder="Add title" required>
+        </div>
+
+        <div class="form-group">
+          <label for="taskDescription">Description</label>
+          <textarea id="taskDescription" name="description" maxlength="300"
+                    placeholder="Add description..."></textarea>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="taskPriority">Priority</label>
+            <select id="taskPriority" name="priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="taskDueDate">Due date</label>
+            <input id="taskDueDate" name="dueDate" type="date">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="secondary-btn" id="cancelBtn" type="button">Cancel</button>
+          <button class="primary-btn" type="submit" id="saveTaskBtn">Save Task</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
