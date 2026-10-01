@@ -61,34 +61,6 @@ Task_Management_Web_Application/
 └── README.md
 ```
 
-## Resume description
+## Conclusion
 
-You can describe the project like this:
-
-**Task Management Web Application | HTML, CSS, JavaScript, LocalStorage**
-
-- Built a responsive task management web application to create, edit, complete, and delete tasks through an interactive UI.
-- Used JavaScript DOM manipulation and event handling to update the interface dynamically without page reloads.
-- Implemented LocalStorage to persist tasks across browser sessions and added task filtering and sorting for better usability.
-- Designed a clean responsive layout using HTML and CSS for desktop and mobile screen sizes.
-
-## Interview explanation
-
-A simple explanation:
-
-> "I built a task management application using HTML, CSS and JavaScript. I used DOM manipulation and event listeners for the user interactions. Tasks are stored as JavaScript objects and saved in LocalStorage using JSON.stringify(). When the application starts, JSON.parse() loads the saved tasks back into the application. I implemented CRUD operations, filtering, searching, sorting and a responsive interface."
-
-## Important
-
-Do not claim technologies or features that you have not personally understood. Be ready to explain:
-
-- DOM manipulation
-- Event listeners
-- LocalStorage
-- JSON.stringify()
-- JSON.parse()
-- Array filter()
-- Array sort()
-- Form validation
-- Event delegation
-- Responsive CSS
+TaskFlow is a simple and practical task management application that demonstrates core frontend development concepts using HTML, CSS, and JavaScript. It provides a clean and responsive interface for managing daily tasks while using browser LocalStorage to maintain data between sessions. The project helped strengthen my understanding of DOM manipulation, event handling, CRUD operations, form validation, filtering, sorting, and responsive web design.
